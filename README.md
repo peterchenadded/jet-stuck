@@ -28,7 +28,6 @@ Members {size:2, ver:2} [
 * Go to http://localhost:9100/swagger-ui.html
 * Click on the GET /v0.1/jet/run_job endpoint
 * Click the try now button
-* Enter in "test" in the value text input
 * Click the execute button
 
 ## Expected results
