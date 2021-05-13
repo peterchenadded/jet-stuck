@@ -45,12 +45,12 @@ public class JetRestController {
   }
   
   @RequestMapping(method = RequestMethod.GET, path = "run_job")
-  public Map<String, Object> runJob(String value) {
+  public Map<String, Object> runJob() {
     
     String mapName = "test";
     IMap<String, Object> map = jetInstance.getHazelcastInstance().getMap(mapName);
     
-    map.put(value, value);
+    map.put("test", "test");
     
     try {
       JetJob jetJob = new JetJob(this.jetInstance);
@@ -60,24 +60,5 @@ public class JetRestController {
     }
 
     return ImmutableMap.of("status", "OK");
-  }
-  
-  public void remove() {
-    String mapName = "test";
-    HazelcastInstance hazelcastInstance = jetInstance.getHazelcastInstance();
-
-    IMap<Object, Object> map = hazelcastInstance.getMap(mapName);
-    map.destroy();
-
-    // remove corresponding tmp
-    map = hazelcastInstance.getMap(mapName + "-tmp");
-    map.destroy();
-
-    // remove corresponding tmp2
-    map = hazelcastInstance.getMap(mapName + "-tmp2");
-    map.destroy();
-    
-    LOG.info("removed mapName={}", mapName);
-
   }
 }
