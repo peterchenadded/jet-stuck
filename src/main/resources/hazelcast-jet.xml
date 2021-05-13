@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast-jet xsi:schemaLocation="http://www.hazelcast.com/schema/jet-config hazelcast-jet-config-4.1.xsd"
+               xmlns="http://www.hazelcast.com/schema/jet-config"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <instance>
+        <cooperative-thread-count>2</cooperative-thread-count>
+        <!-- See http://docs.hazelcast.org/docs/jet/0.5.1/manual/Configuration.html -->
+        <!-- number of threads to use for DAG execution -->
+        <!-- <cooperative-thread-count>2</cooperative-thread-count> -->
+
+        <!-- frequency of flow control packets, in milliseconds -->
+        <!--<flow-control-period>100</flow-control-period>-->
+        <!-- working directory to use for placing temporary files -->
+        <!--<temp-dir>/var/tmp/jet</temp-dir>-->
+        <!-- number of backups for job specifics maps -->
+        <!-- <backup-count>0</backup-count>-->
+    </instance>
+
+    <edge-defaults>
+        <!-- number of available slots for each concurrent queue between two vertices -->
+        <queue-size>10240</queue-size>
+
+        <!-- maximum packet size in bytes, only applies to distributed edges -->
+        <packet-size-limit>16384</packet-size-limit>
+
+        <!-- target receive window size multiplier, only applies to distributed edges -->
+        <receive-window-multiplier>3</receive-window-multiplier>
+    </edge-defaults>
+</hazelcast-jet>
